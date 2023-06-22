@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/shared/app_colors.dart';
 import '../../../../../core/shared/app_text_styles.dart';
+import '../../../controller/form_sign_controller.dart';
 import '../../../controller/welcome_controller.dart';
 
 class FormSignIn extends StatefulWidget {
@@ -17,9 +18,13 @@ class FormSignIn extends StatefulWidget {
 }
 
 class _FormSignInState extends State<FormSignIn> {
+  final FormSignInController formController = FormSignInController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,12 +34,14 @@ class _FormSignInState extends State<FormSignIn> {
           ),
           const SizedBox(height: 20),
           TextFormField(
+            validator: (value) => formController.emailValidator.validate(value),
             style: AppTextStyles.text500,
             cursorColor: AppColors.primary,
             onChanged: (value) {},
             decoration: const InputDecoration(
               labelText: "E-mail",
             ),
+            keyboardType: TextInputType.emailAddress,
           ),
           TextFormField(
             obscureText: true,
@@ -50,7 +57,11 @@ class _FormSignInState extends State<FormSignIn> {
             height: 56,
             width: MediaQuery.of(context).size.width,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                if (!_formKey.currentState!.validate()) {
+                  return;
+                }
+              },
               child: const Text("LOGIN"),
             ),
           ),
