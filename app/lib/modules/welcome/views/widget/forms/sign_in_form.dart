@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared/app_text_styles.dart';
+import '../../../controller/welcome_controller.dart';
 
-class FormSignIn extends StatelessWidget {
+class FormSignIn extends StatefulWidget {
   const FormSignIn({
     super.key,
+    required this.welcomeController,
   });
 
+  final WelcomeController welcomeController;
+
+  @override
+  State<FormSignIn> createState() => _FormSignInState();
+}
+
+class _FormSignInState extends State<FormSignIn> {
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -43,7 +52,9 @@ class FormSignIn extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                widget.welcomeController.changeArea();
+              },
               child: const Text("No have account ? Create now"),
             ),
           )

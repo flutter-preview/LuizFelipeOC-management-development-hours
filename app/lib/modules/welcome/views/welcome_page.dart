@@ -1,9 +1,9 @@
-import 'package:app/core/shared/app_images.dart';
-import 'package:app/core/shared/app_text_styles.dart';
-import 'package:app/core/shared/widgets/svg_widget/svg_widget.dart';
-import 'package:app/modules/welcome/controller/welcome_controller.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/shared/app_images.dart';
+import '../../../core/shared/app_text_styles.dart';
+import '../../../core/shared/widgets/svg_widget/svg_widget.dart';
+import '../controller/welcome_controller.dart';
 import 'widget/dialog_animated_widget.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -124,7 +124,9 @@ class _WelcomePageState extends State<WelcomePage> {
                                   ),
                                 ),
                                 context: context,
-                                builder: (_) => const DialogAnimated(),
+                                builder: (_) => DialogAnimated(
+                                  controller: controller,
+                                ),
                               );
                             },
                             child: const Text("Start Now"),
