@@ -33,39 +33,71 @@ class _FormSignInState extends State<FormSignIn> {
             style: AppTextStyles.heading,
           ),
           const SizedBox(height: 20),
-          TextFormField(
-            validator: (value) => formController.emailValidator.validate(value),
-            style: AppTextStyles.text500,
-            cursorColor: AppColors.primary,
-            onChanged: (value) {},
-            decoration: const InputDecoration(
-              labelText: "E-mail",
-            ),
-            keyboardType: TextInputType.emailAddress,
-          ),
-          TextFormField(
-            validator: (value) => formController.passwordValidator.validate(
-              value,
-            ),
-            obscureText: true,
-            cursorColor: AppColors.primary,
-            style: AppTextStyles.text500,
-            onChanged: (value) {},
-            decoration: const InputDecoration(
-              labelText: "Senha",
-            ),
+          ValueListenableBuilder(
+            valueListenable: formController.lockedInput,
+            builder: (BuildContext context, value, _) {
+              return Column(
+                children: [
+                  TextFormField(
+                    enabled: value,
+                    validator: (value) =>
+                        formController.emailValidator.validate(
+                      value,
+                    ),
+                    style: AppTextStyles.text500,
+                    cursorColor: AppColors.primary,
+                    onChanged: (value) {},
+                    decoration: const InputDecoration(
+                      labelText: "E-mail",
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  TextFormField(
+                    enabled: value,
+                    validator: (value) =>
+                        formController.passwordValidator.validate(
+                      value,
+                    ),
+                    obscureText: true,
+                    cursorColor: AppColors.primary,
+                    style: AppTextStyles.text500,
+                    onChanged: (value) {},
+                    decoration: const InputDecoration(
+                      labelText: "Senha",
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
           const SizedBox(height: 10),
           SizedBox(
             height: 56,
             width: MediaQuery.of(context).size.width,
-            child: ElevatedButton(
-              onPressed: () async {
-                if (!_formKey.currentState!.validate()) {
-                  return;
-                }
+            child: ValueListenableBuilder(
+              valueListenable: formController.signInLoading,
+              builder: (BuildContext context, value, child) {
+                return ElevatedButton(
+                  onPressed: value
+                      ? () {
+                          FocusScope.of(context).unfocus();
+                        }
+                      : () async {
+                          FocusScope.of(context).unfocus();
+
+                          if (!_formKey.currentState!.validate()) {
+                            return;
+                          }
+
+                          formController.simulatedSignIn();
+                        },
+                  child: value
+                      ? const CircularProgressIndicator(
+                          strokeWidth: 0.8,
+                        )
+                      : const Text("LOGIN"),
+                );
               },
-              child: const Text("LOGIN"),
             ),
           ),
           const SizedBox(height: 20),
