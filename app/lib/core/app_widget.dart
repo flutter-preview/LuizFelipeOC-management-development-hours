@@ -44,6 +44,34 @@ class AppWidget extends StatelessWidget {
             ),
           ),
         ),
+        inputDecorationTheme: InputDecorationTheme(
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              strokeAlign: 0.9,
+              color: AppColors.primary,
+            ),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              strokeAlign: 0.5,
+              color: AppColors.primary,
+            ),
+          ),
+          errorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              strokeAlign: 0.8,
+              color: AppColors.red,
+            ),
+          ),
+          focusedErrorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              strokeAlign: 1,
+              color: AppColors.red,
+            ),
+          ),
+          labelStyle: AppTextStyles.text500,
+          errorStyle: AppTextStyles.error500,
+        ),
       ),
       home: const SplashPage(),
     );
