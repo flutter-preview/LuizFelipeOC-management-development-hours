@@ -44,6 +44,9 @@ class _FormSignInState extends State<FormSignIn> {
             keyboardType: TextInputType.emailAddress,
           ),
           TextFormField(
+            validator: (value) => formController.passwordValidator.validate(
+              value,
+            ),
             obscureText: true,
             cursorColor: AppColors.primary,
             style: AppTextStyles.text500,
