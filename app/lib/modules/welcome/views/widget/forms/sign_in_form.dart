@@ -57,6 +57,7 @@ class _FormSignInState extends State<FormSignIn> {
                     validator: (value) =>
                         formController.passwordValidator.validate(
                       value,
+                      "sign in",
                     ),
                     obscureText: true,
                     cursorColor: AppColors.primary,

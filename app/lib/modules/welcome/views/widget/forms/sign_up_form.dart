@@ -1,3 +1,4 @@
+import 'package:app/modules/welcome/controller/form_sign_up_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared/app_text_styles.dart';
@@ -17,6 +18,7 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final FormSignUpController formController = FormSignUpController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            validator: (value) => formController.emailValidator.validate(value),
             onChanged: (value) {},
             decoration: const InputDecoration(
               labelText: "E-mail",
@@ -45,6 +48,11 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            obscureText: true,
+            validator: (value) => formController.passwordValidator.validate(
+              value,
+              "sign up",
+            ),
             onChanged: (value) {},
             decoration: const InputDecoration(
               labelText: "Password",
@@ -52,6 +60,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            obscureText: true,
             onChanged: (value) {},
             decoration: const InputDecoration(
               labelText: "Confirma Password",
