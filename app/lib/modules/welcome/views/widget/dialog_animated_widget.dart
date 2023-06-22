@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/shared/app_colors.dart';
 import '../../controller/welcome_controller.dart';
 import 'forms/sign_in_form.dart';
+import 'forms/sign_up_form.dart';
 
 class DialogAnimated extends StatefulWidget {
   const DialogAnimated({
@@ -36,12 +37,13 @@ class _DialogAnimatedState extends State<DialogAnimated> {
             physics: const BouncingScrollPhysics(),
             child: ValueListenableBuilder(
               valueListenable: widget.controller.changeForm,
-              builder: (BuildContext context, dynamic value, Widget? child) {
+              builder: (BuildContext context, value, _) {
                 return AnimatedCrossFade(
+                  secondCurve: Curves.easeInOut,
                   crossFadeState: value
                       ? CrossFadeState.showSecond
                       : CrossFadeState.showFirst,
-                  duration: const Duration(milliseconds: 400),
+                  duration: const Duration(milliseconds: 350),
                   firstChild: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
@@ -64,22 +66,15 @@ class _DialogAnimatedState extends State<DialogAnimated> {
                       ),
                     ),
                   ),
-                  secondChild: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
+                  secondChild: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: ValueListenableBuilder(
+                        valueListenable: widget.controller.changeForm,
+                        builder: (BuildContext context, value, _) {
+                          return SignUpForm(widget: widget.controller);
+                        },
                       ),
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextButton(
-                            onPressed: () => widget.controller.changeArea(),
-                            child: const Text("dsadasdsa"))
-                      ],
                     ),
                   ),
                 );
