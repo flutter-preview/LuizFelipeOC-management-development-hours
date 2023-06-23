@@ -16,4 +16,16 @@ class FormSignUpController {
   TextEditingController password = TextEditingController(text: "");
   TextEditingController confirmPassword = TextEditingController(text: "");
   TextEditingController userName = TextEditingController(text: "");
+
+  ValueNotifier<bool> isLockedInput = ValueNotifier(true);
+  ValueNotifier<bool> processingRegister = ValueNotifier(false);
+
+  void signUp() async {
+    isLockedInput.value = false;
+    processingRegister.value = true;
+    await Future.delayed(const Duration(seconds: 1));
+
+    isLockedInput.value = true;
+    processingRegister.value = false;
+  }
 }
