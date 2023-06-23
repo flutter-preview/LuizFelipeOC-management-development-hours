@@ -19,13 +19,13 @@ class FormSignUpController {
 
   ValueNotifier<bool> isLockedInput = ValueNotifier(true);
   ValueNotifier<bool> processingRegister = ValueNotifier(false);
+  ValueNotifier<bool> finish = ValueNotifier(false);
 
   void signUp() async {
     isLockedInput.value = false;
     processingRegister.value = true;
     await Future.delayed(const Duration(seconds: 1));
 
-    isLockedInput.value = true;
-    processingRegister.value = false;
+    finish.value = true;
   }
 }
