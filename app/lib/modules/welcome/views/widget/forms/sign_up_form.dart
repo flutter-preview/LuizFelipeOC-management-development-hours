@@ -33,6 +33,9 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: 20),
           TextFormField(
+            validator: (value) => formController.userNameValidator.validate(
+              value,
+            ),
             onChanged: (value) {},
             decoration: const InputDecoration(
               labelText: "Username",
