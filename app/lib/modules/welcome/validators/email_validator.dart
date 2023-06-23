@@ -1,7 +1,7 @@
 class EmailValidator {
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return "This email is empty";
+      return "The email is empty";
     }
 
     final emailIsValid = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(
@@ -9,7 +9,7 @@ class EmailValidator {
     );
 
     if (!emailIsValid) {
-      return "This email is invalid";
+      return "The emails is invalid";
     }
 
     return null;

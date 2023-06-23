@@ -1,7 +1,7 @@
 class PasswordValidator {
   String? validate(String? value, type) {
     if (value == null || value.isEmpty) {
-      return "Password is not empty";
+      return "Password is empty";
     }
 
     if (type == "sign in") {
