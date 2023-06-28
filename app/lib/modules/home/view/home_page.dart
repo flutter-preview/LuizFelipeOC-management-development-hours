@@ -4,9 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/shared/app_colors.dart';
 import '../../../core/shared/app_text_styles.dart';
+import '../../create_project/views/create_project_page.dart';
 import '../controller/projects_controller.dart';
-import '../widgets/custom_app_bar_widget.dart';
-import '../widgets/list_projetcs_widget.dart';
+import 'widgets/custom_app_bar_widget.dart';
+import 'widgets/list_projetcs_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -68,7 +69,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const CreateProjectPage(),
+            ),
+          ),
           label: const Row(
             children: [
               FaIcon(
