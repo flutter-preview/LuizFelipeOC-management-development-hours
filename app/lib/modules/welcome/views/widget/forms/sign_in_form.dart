@@ -1,3 +1,4 @@
+import 'package:app/modules/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared/app_colors.dart';
@@ -91,6 +92,13 @@ class _FormSignInState extends State<FormSignIn> {
                           }
 
                           formController.simulatedSignIn();
+
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const HomePage(),
+                            ),
+                          );
                         },
                   child: value
                       ? const CircularProgressIndicator(
