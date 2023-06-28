@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/shared/app_colors.dart';
-import '../controller/projects_controller.dart';
+import '../../../../core/shared/app_colors.dart';
+import '../../controller/projects_controller.dart';
 import 'card_projects.dart';
 
 class ListProjectsWidget extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/shared/app_text_styles.dart';
-import '../model/project_model.dart';
+import '../../../../core/shared/app_text_styles.dart';
+import '../../model/project_model.dart';
 
 class CardProjectsWidget extends StatelessWidget {
   const CardProjectsWidget({
