@@ -79,6 +79,12 @@ class AppWidget extends StatelessWidget {
           color: AppColors.primary,
           elevation: 0,
         ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: AppColors.primary,
+          elevation: 10,
+          iconSize: 15,
+          extendedTextStyle: AppTextStyles.bodyWhite500,
+        ),
       ),
       home: const SplashPage(),
     );
