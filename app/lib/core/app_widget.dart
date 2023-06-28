@@ -75,6 +75,10 @@ class AppWidget extends StatelessWidget {
         progressIndicatorTheme: ProgressIndicatorThemeData(
           color: AppColors.white,
         ),
+        appBarTheme: AppBarTheme(
+          color: AppColors.primary,
+          elevation: 0,
+        ),
       ),
       home: const SplashPage(),
     );
