@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/shared/app_colors.dart';
 import '../../../core/shared/app_text_styles.dart';
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
               projectController.getProjects();
             },
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -63,6 +65,20 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {},
+          label: const Row(
+            children: [
+              FaIcon(
+                FontAwesomeIcons.plus,
+              ),
+              SizedBox(width: 20),
+              Text(
+                "New",
+              ),
+            ],
           ),
         ),
       ),
