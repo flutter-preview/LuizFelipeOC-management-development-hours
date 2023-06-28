@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../../../core/shared/app_colors.dart';
 import '../../../core/shared/app_text_styles.dart';
+import 'options_user_widget.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -29,13 +30,29 @@ class CustomAppBar extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                height: 64,
-                width: 64,
-                decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(
-                    15,
+              GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                      ),
+                    ),
+                    context: context,
+                    builder: (_) {
+                      return const OptionsUserWidget();
+                    },
+                  );
+                },
+                child: Container(
+                  height: 64,
+                  width: 64,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(
+                      15,
+                    ),
                   ),
                 ),
               ),
