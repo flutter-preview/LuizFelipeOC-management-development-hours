@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/shared/app_text_styles.dart';
+import '../../../details_project/view/widget/details_project.dart';
 import '../../model/project_model.dart';
 
 class CardProjectsWidget extends StatelessWidget {
@@ -37,7 +38,14 @@ class CardProjectsWidget extends StatelessWidget {
             Container(
               alignment: Alignment.bottomRight,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => DetailsProjects(
+                      projects: projects,
+                    ),
+                  ),
+                ),
                 child: Text(
                   "View details",
                   style: AppTextStyles.bodyBlue200,
