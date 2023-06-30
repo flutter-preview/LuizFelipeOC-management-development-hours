@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -48,34 +45,22 @@ class FormCreateProjectWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10),
                       child: InkWell(
                         onTap: () async {
-                          if (Platform.isAndroid) {
-                            await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime.now(),
-                              lastDate: DateTime(2030),
-                              builder: (context, child) {
-                                return Theme(
-                                  data: Theme.of(context).copyWith(
-                                    colorScheme: ColorScheme.light(
-                                      primary: AppColors.darkBlue,
-                                    ),
+                          await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime(2030),
+                            builder: (context, child) {
+                              return Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme: ColorScheme.light(
+                                    primary: AppColors.darkBlue,
                                   ),
-                                  child: child!,
-                                );
-                              },
-                            );
-                          }
-
-                          if (Platform.isIOS) {
-                            CupertinoDatePicker(
-                              onDateTimeChanged: (value) {},
-                              initialDateTime: DateTime.now(),
-                              maximumYear: 2030,
-                              dateOrder: DatePickerDateOrder.dmy,
-                              mode: CupertinoDatePickerMode.date,
-                            );
-                          }
+                                ),
+                                child: child!,
+                              );
+                            },
+                          );
                         },
                         child: const FaIcon(
                           FontAwesomeIcons.calendar,
@@ -96,34 +81,22 @@ class FormCreateProjectWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10),
                       child: InkWell(
                         onTap: () async {
-                          if (Platform.isAndroid) {
-                            await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime.now(),
-                              lastDate: DateTime(2030),
-                              builder: (context, child) {
-                                return Theme(
-                                  data: Theme.of(context).copyWith(
-                                    colorScheme: ColorScheme.light(
-                                      primary: AppColors.darkBlue,
-                                    ),
+                          await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime(2030),
+                            builder: (context, child) {
+                              return Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme: ColorScheme.light(
+                                    primary: AppColors.darkBlue,
                                   ),
-                                  child: child!,
-                                );
-                              },
-                            );
-                          }
-
-                          if (Platform.isIOS) {
-                            CupertinoDatePicker(
-                              onDateTimeChanged: (value) {},
-                              initialDateTime: DateTime.now(),
-                              maximumYear: 2030,
-                              dateOrder: DatePickerDateOrder.dmy,
-                              mode: CupertinoDatePickerMode.date,
-                            );
-                          }
+                                ),
+                                child: child!,
+                              );
+                            },
+                          );
                         },
                         child: const FaIcon(
                           FontAwesomeIcons.calendar,
