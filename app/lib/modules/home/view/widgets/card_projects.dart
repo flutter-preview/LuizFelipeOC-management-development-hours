@@ -39,7 +39,7 @@ class CardProjectsWidget extends StatelessWidget {
               child: TextButton(
                 onPressed: () {},
                 child: Text(
-                  "View",
+                  "View details",
                   style: AppTextStyles.bodyBlue200,
                 ),
               ),
